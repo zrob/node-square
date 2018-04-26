@@ -1,0 +1,4 @@
+---
+applications:
+  - name: riff-square-buildpack
+    buildpack: https://github.com/scothis/node-function-invoker.git#buildpack

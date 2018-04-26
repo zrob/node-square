@@ -1,0 +1,12 @@
+{
+  "name": "@projectriff/riff-square-buildpack-sample",
+  "private": true,
+  "version": "1.0.0",
+  "description": "riff square sample via buildpacks",
+  "main": "square.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Scott Andrews",
+  "license": "Apache-2.0"
+}
