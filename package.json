@@ -1,8 +1,8 @@
 {
-  "name": "@projectriff/riff-square-buildpack-sample",
+  "name": "@projectriff/square-sample",
   "private": true,
   "version": "1.0.0",
-  "description": "riff square sample via buildpacks",
+  "description": "projectriff square sample",
   "main": "square.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
