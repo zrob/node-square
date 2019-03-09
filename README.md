@@ -1,45 +1,36 @@
 # riff Sample: Node Square
 
-A sample function that multiplies a number by itself, returning the squared value.
+A sample JavaScript function that multiplies a number by itself, returning the squared value.
 
 ## Deployment
 
-1. Setup a running riff install (tested with riff 0.0.6)
+1.  Install riff.
 
-   See riff's [Getting Started](https://github.com/projectriff/riff/blob/master/Getting-Started.adoc) guide. Skip if you already have riff running.
+    These instructions assume riff v0.2.0 or later. See riff's [Getting Started](https://projectriff.io/docs/getting-started/) guide. Skip if you already have riff running.
 
-2. Install the node invoker
+2.  Create the function.
 
-   ```bash
-    riff invokers apply -f https://github.com/projectriff/node-function-invoker/raw/v0.0.8/node-invoker.yaml
-   ```
+    This assumes that the default namespace was initialized with credentials for your `DOCKER_ID` on [Docker Hub](https://docs.docker.com/docker-hub/).
 
-3. Clone this repo
+    ```bash
+    riff function create square \
+    --git-repo https://github.com/projectriff-samples/node-square  \
+    --artifact square.js \
+    --image $DOCKER_ID/square \
+    --verbose
+    ```
 
-   ```bash
-   git clone https://github.com/projectriff-samples/node-square.git
-   cd node-square
-   ```
+4.  Invoke the function.
 
-4. create the function definition
+    ```bash
+    riff service invoke square --json -- -w '\n' -d 7
+    ```
 
-    Since there are multiple files in the directory, we need to tell `riff` which file to use as the entry point.
+    Result:
 
-   ```bash
-   riff create node -a package.json
-   ```
+    ```txt
+    curl http://localhost:31380/ -H 'Host: square.default.example.com' -H 'Content-Type: application/json' -w '\n' -d 7
+    49
+    ```
 
-4. Invoke the function
-
-   ```bash
-   riff publish -d 3 -r
-   ```
-
-   Will result in:
-
-   ```txt
-   Posting to http://127.0.0.1:31768/requests/node-square
-   9
-   ```
-
-   Change the number 3 to another number to see its square.
+    Change the number 7 to another number to see its square.
